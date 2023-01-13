@@ -1,0 +1,110 @@
+====================================
+BGP sonic config_db
+====================================
+
+"BGP_NEIGHBOR": {
+    "172.0.1.0": {
+        "asn": "65199",
+        "holdtime": "9",
+        "keepalive": "3",
+        "local_addr": "172.0.1.1",
+        "name": "spine01",
+        "nhopself": "0",
+        "rrclient": "0"
+    },
+...}
+
+====================================
+bgp sonic cli output
+====================================
+
+BGP neighbor is 172.0.1.0, remote AS 65199, local AS 65101, external link
+ Description: spine01
+Hostname: spine01
+ Member of peer-group PEER_V4 for session parameters
+  BGP version 4, remote router ID 10.255.255.101, local router ID 10.255.255.1
+  BGP state = Established, up for 00:32:29
+  Last read 00:00:02, Last write 00:00:02
+  Hold time is 9, keepalive interval is 3 seconds
+  Configured hold time is 9, keepalive interval is 3 seconds
+  Neighbor capabilities:
+    4 Byte AS: advertised and received
+    AddPath:
+      IPv4 Unicast: RX advertised IPv4 Unicast and received
+    Route refresh: advertised and received(old & new)
+    Address Family IPv4 Unicast: advertised and received
+    Hostname Capability: advertised (name: leaf01,domain name: n/a) received (name: spine01,domain name: n/a)
+    Graceful Restart Capability: advertised and received
+      Remote Restart timer is 240 seconds
+      Address families by peer:
+        IPv4 Unicast(preserved)
+  Graceful restart information:
+    End-of-RIB send: IPv4 Unicast
+    End-of-RIB received: IPv4 Unicast
+    Local GR Mode: Restart*
+    Remote GR Mode: Restart
+    R bit: True
+    Timers:
+      Configured Restart Time(sec): 240
+      Received Restart Time(sec): 240
+    IPv4 Unicast:
+      F bit: True
+      End-of-RIB sent: Yes
+      End-of-RIB sent after update: No
+      End-of-RIB received: Yes
+      Timers:
+        Configured Stale Path Time(sec): 360
+        Configured Selection Deferral Time(sec): 360
+  Message statistics:
+    Inq depth is 0
+    Outq depth is 0
+                         Sent       Rcvd
+    Opens:                  1          1
+    Notifications:          0          0
+    Updates:               67         49
+    Keepalives:           650        650
+    Route Refresh:          0          0
+    Capability:             0          0
+    Total:                718        700
+  Minimum time between advertisement runs is 0 seconds
+
+ For address family: IPv4 Unicast
+  PEER_V4 peer-group member
+  Update group 1, subgroup 1
+  Packet Queue length 0
+  Inbound soft reconfiguration allowed
+  Community attribute sent to this neighbor(all)
+  Inbound path policy configured
+  Outbound path policy configured
+  Route map for incoming advertisements is *FROM_BGP_PEER_V4
+  Route map for outgoing advertisements is *TO_BGP_PEER_V4
+  178 accepted prefixes
+
+  Connections established 1; dropped 0
+  Last reset 00:32:52,  Waiting for peer OPEN
+Local host: 172.0.1.1, Local port: 39406
+Foreign host: 172.0.1.0, Foreign port: 179
+Nexthop: 172.0.1.1
+Nexthop global: fe80::5054:ff:fe11:1156
+Nexthop local: fe80::5054:ff:fe11:1156
+BGP connection: shared network
+BGP Connect Retry Timer in Seconds: 10
+Read thread: on  Write thread: on  FD used: 34
+
+==========================
+bgp parsed json result
+==========================
+
+"bgp": [...
+    {
+      "LOCALADDRESS": "172.0.1.1",
+      "NEIGHBORADDRESS": "172.0.1.0",
+      "LOCALAS": "65101",
+      "REMOTEAS": "65199",
+      "LOCALROUTERID": "10.255.255.1",
+      "REMOTEROUTERID": "10.255.255.101",
+      "HOLDTIME": "9",
+      "KEEPALIVE": "3",
+      "BGPSTATE": "Established"
+    }
+...]

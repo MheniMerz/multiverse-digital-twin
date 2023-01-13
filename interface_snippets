@@ -1,0 +1,91 @@
+=============================
+interace sonic config_db
+=============================
+     "INTERFACE": {...
+        "Ethernet4": {},
+        "Ethernet4|172.0.2.1/31": {},
+    ...}
+    
+    "PORT": {...
+        "Ethernet4": {
+            "admin_status": "up",
+            "alias": "fortyGigE0/4",
+            "index": "42",
+            "lanes": "29,30,31,32",
+            "mtu": "9216",
+            "speed": "40000"
+        },
+    ...}
+============================
+interface sonic CLI output
+============================
+
+Interface Ethernet4 is up, line protocol is up
+  Link ups:       1    last: 2023/01/13 15:30:02.32
+  Link downs:     2    last: 2023/01/13 15:30:02.28
+  vrf: default
+  index 42 metric 0 mtu 9216 speed 10
+  flags: <UP,BROADCAST,RUNNING,MULTICAST>
+  Type: Unknown
+  HWaddr: 88:88:13:af:01:04
+  inet 172.0.2.1/31
+  inet6 fe80::5054:ff:fe11:1156/64
+  Interface Type Other
+  Interface Slave Type None
+
+==============================
+interface oncos CLI output
+==============================
+
+  Interface xe1
+  Hardware is ETH  Current HW addr: 80a2.350d.4242
+  Physical:80a2.350d.4242  Logical:(not set)
+  Forward Error Correction (FEC) configured is Auto (default)
+  FEC status is N/A
+  Port Mode is Router
+  Protected Mode is Promiscuous
+  Interface index: 9216
+  Metric 1 mtu 1500 duplex-full link-speed 10g
+  Debounce timer: disable 
+  ARP ageing timeout 1500
+  <UP,BROADCAST,RUNNING,ALLMULTI,MULTICAST>
+  VRF Binding: Not bound
+  DHCP client is disabled.
+  Last Flapped: Never
+  Statistics last cleared: Never
+  inet 172.0.2.1/31 broadcast 172.0.2.1
+  inet6 fe80::82a2:35ff:fe0d:4242/64
+  5 minute input rate 6042 bits/sec, 4 packets/sec
+  5 minute output rate 1483 bits/sec, 0 packets/sec
+  RX
+    unicast packets 627744 multicast packets 362035 broadcast packets 648906 
+    input packets 1638685 bytes 317737161 
+    jumbo packets 0 
+    undersize 0 oversize 0 CRC 0 fragments 0 jabbers 0
+    input error 0 
+    input with dribble 0 input discard 0 
+    Rx pause 0 
+  TX
+    unicast packets 384266 multicast packets 13673 broadcast packets 2 
+    output packets 397941 bytes 95381592
+    jumbo packets 0
+    output errors 0 collision 0 deferred 0 late collision 0
+    output discard 0
+    Tx pause 0 
+
+================================
+interface parsed json result
+================================
+
+"interface": [...
+    {
+        "NAME": "Ethernet4",
+        "ADMIN_STATUS": "up",
+        "INDEX": "42",
+        "MTU": "9216",
+        "SPEED": "10",
+        "MACADDR": "88:88:00:11:00:04",
+        "IPADDR": "",
+        "TYPE": "Other"
+    }
+...]
