@@ -91,6 +91,27 @@ BGP connection: shared network
 BGP Connect Retry Timer in Seconds: 10
 Read thread: on  Write thread: on  FD used: 34
 
+==================================
+ocnos bgp CLI output
+==================================
+
+BGP neighbor is 10.11.201.1, remote AS 200, local AS 100, external link
+  BGP version 4, local router ID 192.168.0.2, remote router ID 0.0.0.0
+  BGP state = Idle
+  Last read Never, hold time is 90, keepalive interval is 30 seconds
+  Received 0 messages, 0 notifications, 0 in queue
+  Sent 0 messages, 0 notifications, 0 in queue
+  Route refresh request: received 0, sent 0
+  Minimum time between advertisement runs is 30 seconds
+ For address family: IPv4 Unicast
+  BGP table version 1, neighbor version 0
+  Index 1, Offset 0, Mask 0x2
+  Community attribute sent to this neighbor (both)
+  0 accepted prefixes
+  0 announced prefixes
+
+ Connections established 0; dropped 0
+
 ==========================
 bgp parsed json result
 ==========================
